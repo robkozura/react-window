@@ -378,7 +378,10 @@ export default function createListComponent({
           },
         },
         createElement(innerElementType || innerTagName || 'div', {
-          children: items,
+          children: [...items, createElement('div', {
+            key: 'spacer',
+            className: 'react-window-spacer',
+          })],
           ref: innerRef,
           style: {
             height: isHorizontal ? '100%' : estimatedTotalSize,
