@@ -356,7 +356,7 @@ export default function createListComponent({
       items.push(
         createElement("div", {
           data: itemData,
-          key: itemKey(index, itemData),
+          key: "spacer",
           index: stopIndex + 1,
           style: this._getItemStyle(stopIndex),
         })
