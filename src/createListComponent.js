@@ -353,6 +353,15 @@ export default function createListComponent({
         }
       }
 
+      items.push(
+        createElement("div", {
+          data: itemData,
+          key: itemKey(index, itemData),
+          index: stopIndex + 1,
+          style: this._getItemStyle(stopIndex),
+        })
+      );
+
       // Read this value AFTER items have been created,
       // So their actual sizes (if variable) are taken into consideration.
       const estimatedTotalSize = getEstimatedTotalSize(
@@ -378,13 +387,7 @@ export default function createListComponent({
           },
         },
         createElement(innerElementType || innerTagName || 'div', {
-          children: [...items, createElement('div', {
-            key: 'spacer',
-            position: 'absolute',
-            top:  this._getItemStyle(items.length - 1).top,
-            className: 'react-window-spacer',
-            style: {height: '1px', overflowAnchor: 'auto'}
-          })],
+          children: items,
           ref: innerRef,
           style: {
             height: isHorizontal ? '100%' : estimatedTotalSize,
