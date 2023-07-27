@@ -381,7 +381,7 @@ export default function createListComponent({
           children: [...items, createElement('div', {
             key: 'spacer',
             position: 'absolute',
-            top: getItemOffset(this.props, items.length - 1, this._instanceProps),
+            top:  this._getItemStyle(items.length - 1).top,
             className: 'react-window-spacer',
             style: {height: '1px', overflowAnchor: 'auto'}
           })],
